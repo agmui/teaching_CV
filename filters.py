@@ -2,7 +2,7 @@ import os
 from definitions import ROOT_DIR, SMOL_BLU, SMOL_RED, BIG_BLU, BIG_RED
 import cv2
 import numpy as np
-from matplotlib import pyplot as plt
+# from matplotlib import pyplot as plt
 
 lower_blu = [239, 219, 0]
 upper_blu = [255, 255, 194]
