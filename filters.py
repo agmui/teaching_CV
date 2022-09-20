@@ -15,26 +15,32 @@ upper_black = [121, 61, 67]
 
 def hue_lower(H):
     lower_black[0] = H
+    lower_red[0] = H
 
 
 def sat_lower(S):
     lower_black[1] = S
+    lower_red[1] = S
 
 
 def val_lower(V):
     lower_black[2] = V
+    lower_red[2] = V
 
 
 def hue_upper(H):
     upper_black[0] = H
+    upper_red[0] = H
 
 
 def sat_upper(S):
     upper_black[1] = S
+    upper_red[1] = S
 
 
 def val_upper(V):
     upper_black[2] = V
+    upper_red[2] = V
 
 
 def make_slid(name):
@@ -323,6 +329,64 @@ def convolutionMatching(image, panelType: str, showExtra: bool = False, coloredI
 
     # TODO output rect should return near the up right corner to verify if it correct
     return max_val > 0.02
+
+
+def findRect(box, box2, img,showExtra: bool = False):  # TODO optimise
+    s = box.sum(axis=1)
+    TL = box[np.argmin(s)]
+    diff = np.diff(box, axis=1)
+    BL = box[np.argmax(diff)]
+
+    s = box2.sum(axis=1)
+    TR = box2[np.argmax(s)]
+    diff = np.diff(box2, axis=1)
+    BR = box2[np.argmin(diff)]
+
+    # cv2.circle(img, TL, 3, (255, 0, 0), 3)  # blue
+    # cv2.circle(img, BR, 3, (255, 255, 255), 3)  # white
+    # cv2.circle(img, BL, 3, (0, 255, 0), 3)  # green
+    # cv2.circle(img, TR, 3, (0, 0, 255), 3)  # red
+
+    # create linear equation
+    points = [TL, BL]
+    x_coords, y_coords = zip(*points)
+    A = np.vstack([x_coords, np.ones(len(x_coords))]).T
+    m, c = np.linalg.lstsq(A, y_coords, rcond=None)[0]
+    # top offset
+    f = lambda x1: int(m * x1 + c)
+    x = (TL[0] - BL[0]) * .85
+    if x == 0:
+        dist = TL[1] - BL[1]
+        TL[1] += dist * 0.9
+        BL[1] -= dist * 0.9
+    else:
+        TL = (int(TL[0] + x), f(TL[0] + x))
+        BL = (int(BL[0] - x), f(BL[0] - x))
+
+    points = [TR, BR]
+    x_coords, y_coords = zip(*points)
+    A = np.vstack([x_coords, np.ones(len(x_coords))]).T
+    m2, c2 = np.linalg.lstsq(A, y_coords, rcond=None)[0]
+    f = lambda x1: int(m2 * x1 + c2)
+    x = (TR[0] - BR[0]) * .85
+    if x == 0:
+        dist = TR[1] - BR[1]
+        TR[1] += dist * .9
+        BR[1] -= dist * .9
+    else:
+        TR = (int(TR[0] + x), f(TR[0] + x))
+        BR = (int(BR[0] - x), f(BR[0] - x))
+
+    # cv2.circle(img, TL, 3, (255, 0, 0), 3)  # blue
+    # cv2.circle(img, BR, 3, (255, 255, 255), 3)  # white
+    # cv2.circle(img, BL, 3, (0, 255, 0), 3)  # green
+    # cv2.circle(img, TR, 3, (0, 0, 255), 3)  # red
+
+    if showExtra:
+        pts = np.array([TL, BR, TR, BL], np.int32)
+        cv2.polylines(img, [pts], True, (255, 255, 0), 2)
+
+    return TL, BR, BL, TR
 
 
 def on_radio(*args):
