@@ -1,6 +1,7 @@
 # import the opencv library
 import cv2
 import numpy as np
+import crappyV2_EX
 import crappyV2
 import filters
 
@@ -15,6 +16,7 @@ while (True):
     ret, frame = vid.read()
 
     crappyV2.objectDetection(frame, 'red')
+    # crappyV2_EX.objectDetection(frame, 'red')
 
 
     cv2.imshow(win_name,frame)
