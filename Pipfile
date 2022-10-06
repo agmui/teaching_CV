@@ -7,6 +7,7 @@ name = "pypi"
 numpy = "*"
 opencv-python = "*"
 pillow = "*"
+pyrealsense2 = "*"
 
 [dev-packages]
 

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ed3be3ff57a757733d3c7ac4d303a9a59aaaf7e93b4cbb993ce8e0db5fda2cff"
+            "sha256": "d557d8d50819569150b60b0024c7c12a5a7be202f9391879532329d3b248fa5a"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -126,6 +126,28 @@
             ],
             "index": "pypi",
             "version": "==9.2.0"
+        },
+        "pyrealsense2": {
+            "hashes": [
+                "sha256:08567e151cd3b6a35d1754e0b663c273bb0209cce778dcdd2e574344f6cabed0",
+                "sha256:1a5c0009581c2ab1a31a2cb580de4a00cb26b8ff4dc6bdbf7d42bf9a293dcadb",
+                "sha256:4bf38ef088155db62e6e007b4d56cb4a8781e5c0e3f5282599c437968b73cf2a",
+                "sha256:5cee4c9fab396002247f6ed79aff81c3a9ecfc756db5b3f99db44d6ed17cc4fd",
+                "sha256:5df4f2b4fd19c5a5b74953d2accce55160684100d513a9b0fda2ef468c32ac69",
+                "sha256:76a7ee25cc01719ae9520bbf68804055090b21d590417b0e6c2405d55b89815b",
+                "sha256:82035863afac1934aea7eb14a05b70967c1413dc31459a7b8838802d68ae57f4",
+                "sha256:8d04b7623642b5713ef762608da61b17c3877e624b6f906994214f839b1ce6c3",
+                "sha256:91e9b2ded5a3f0dc2f950e51dc25c0cda708d758f6cf7f9a5116779e82715adf",
+                "sha256:96dbb9b9b77cc9dd1c6ccf3b88851dc925cd96487e42580e10e5062e4f28d808",
+                "sha256:9a658d633d39ea6b77dead8d58d52b89e2ff713c66a7f1cc5570e431cb9d4a97",
+                "sha256:9b3083c6018e175368c7b86acca80cf006b3a7e84553e1bfe2850e6c7384accd",
+                "sha256:ae61bb6741de0ce3280ef8b94ccae0d0ea21504440f845b7b00e0a090d367d65",
+                "sha256:b171fd18fd7c3da5a51f9e333e2676aea11eeb6eaf968b3545d667babf84e51d",
+                "sha256:cae281054f35cecd8aa273dedae703b9b9cc395c2ad6eab4477eecf069d5edd0",
+                "sha256:f9d5010e3bb7170478559876f0d4feda212b924242b6be1a3fdf607ba786f5e5"
+            ],
+            "index": "pypi",
+            "version": "==2.51.1.4348"
         }
     },
     "develop": {}
