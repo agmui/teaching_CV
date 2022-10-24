@@ -34,6 +34,9 @@ class NeuralNetwork:
         return out
 
     def feed_forward(self, nodes:np.ndarray, weights: np.ndarray, basis: np.ndarray) -> np.ndarray:
+        z=(np.dot(weights, nodes))
+        x=(np.dot(weights, nodes)+basis)
+        y=self.sigmoid(np.dot(weights, nodes)+basis)
         return self.sigmoid(np.dot(weights, nodes) + basis)
 
     def cost(self, output, ans) -> np.ndarray:

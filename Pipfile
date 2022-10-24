@@ -8,6 +8,9 @@ numpy = "*"
 opencv-python = "*"
 pillow = "*"
 pyrealsense2 = "*"
+matplotlib = "*"
+tensorflow = "*"
+jupyter = "*"
 
 [dev-packages]
 
